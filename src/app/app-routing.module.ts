@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthService } from './service/auth.service';
+import { AuthGuard } from './shared/auth.guard';
 
 const routes: Routes = [
   
@@ -22,11 +24,16 @@ const routes: Routes = [
   },
   {
     path: 'home-page',
-    loadChildren: () => import('./pages/home-page/home-page.module').then( m => m.HomePagePageModule)
+    loadChildren: () => import('./pages/home-page/home-page.module').then( m => m.HomePagePageModule),
+    canActivate: [AuthGuard],
   },
   {
     path: 'login-screen-page',
     loadChildren: () => import('./pages/login-screen-page/login-screen-page.module').then( m => m.LoginScreenPagePageModule)
+  },
+  {
+    path: 'verify-email',
+    loadChildren: () => import('./pages/verify-email/verify-email.module').then( m => m.VerifyEmailPageModule)
   },
 ];
 

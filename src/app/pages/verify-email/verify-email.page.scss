@@ -27,41 +27,19 @@ ion-item{
         margin-right: 20px;
     }
 }
-.password_forgot{
-    text-align: right;
-    ion-button{
-        font-size: 12px;
-    }
-}
 
-.sign-btn-wrap{
+
+.resend-btn-wrap{
     text-align: center;
     padding-top: 30px;
-    .sign-btn{
+    .reset-btn{
         --ion-primary-color:#215AB7;
         color:#F4F6FA;
 
     }
 }
 
-.text-tag{
-    margin-top:40px;
-    text-align:center;
-    span{
-        font-size: 13px;
-        font-weight: normal;
-        color: gray;
-    }
-}
-.social-btns{
-    
-    text-align: center;
-    ion-button{
-        width: 50px;
-        padding-left: 5px !important;
-        
-    }
-}
+
 ion-card{
     --ion-background-color:transparent;
     box-shadow: none !important;

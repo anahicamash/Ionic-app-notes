@@ -1,0 +1,27 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar> 
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="user$ | async as user">
+  <ion-card class="ion-no-margin">
+    <ion-img src="assets/images/8.png"></ion-img>
+    <ion-card-title> Verification </ion-card-title>
+    <ion-card-content>
+      <h2>Thank you for Registering</h2>
+      <p>We have sent an email to <strong>{{user.email}} </strong></p>
+      <p> Please check your email and click on the link to verify your email</p>
+      
+      <div class="reset-btn-wrap">
+        <ion-button fill="solid" shape= "round" class="resend-btn" (click)="onSendEmail()">Resend Verification email</ion-button>
+  
+      </div>
+     
+  
+      
+    </ion-card-content>
+  </ion-card>
+
+
+
+</ion-content>
