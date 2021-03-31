@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
@@ -9,21 +10,32 @@ import { AuthService } from 'src/app/service/auth.service';
 })
 export class SignUpPagePage implements OnInit {
 
-  constructor(private authSvc: AuthService, private router:Router) { }
+  constructor(private authSvc: AuthService, private router:Router,private toastCtrl: ToastController) { }
 
   ngOnInit() {
   }
 
   async onRegister(email, password){
-    try {
-      const user = await this.authSvc.signin(email.value, password.value);
-      if (user) {
-        const isVerified = this.authSvc.isEmailVerified(user);
-        this.redirectUser(isVerified)
+
+    if (email && password !=null){
+      try {
+        const user = await this.authSvc.signup(email.value, password.value);
+        if (user) {
+          const isVerified = this.authSvc.isEmailVerified(user);
+          this.redirectUser(isVerified)
+        }
+      } catch (error) {
+        this.showToast(error);
+        console.log('error ----', error);
       }
-    } catch (error) {
-      console.log('error ----', error);
+
+    }else{
+      
+      this.showToast("Complete the fields");
     }
+
+
+    
   }
 
   private redirectUser(isVerified:boolean){
@@ -34,4 +46,16 @@ export class SignUpPagePage implements OnInit {
     }
   }
 
+  showToast(message: string){
+    this.toastCtrl.create({
+      message: message,
+      duration:3000
+    }).then(toastData => toastData.present());
+  }
+
 }
+
+
+
+
+

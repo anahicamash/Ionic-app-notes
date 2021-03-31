@@ -35,7 +35,7 @@ export class AuthService {
       console.log('Error ', error)
     }
   }
-  async signin(email: string, password: string):Promise<User> {
+  async signup(email: string, password: string):Promise<User> {
     try {
       const {user} = await this.afAuth.createUserWithEmailAndPassword(email, password);
       await this.sendVerificationEmail();
