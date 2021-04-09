@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoadingController, ToastController } from '@ionic/angular';
+import { ToastController } from '@ionic/angular';
 import { AuthService } from 'src/app/service/auth.service';
 import { CrudService } from 'src/app/service/crud.service';
 import { Post } from 'src/app/shared/post.interface';
@@ -21,7 +21,6 @@ export class HomePagePage implements OnInit {
   private path ='posts/'
   constructor(private authSvc: AuthService,
               private router: Router,
-              private loadingCtrl: LoadingController,
               private toastCtrl: ToastController,
               private crudSvc: CrudService
               ) { }
@@ -50,7 +49,7 @@ export class HomePagePage implements OnInit {
   async deletePost(post: Post){
     try {
       this.crudSvc.deleteDoc(this.path,post.id);
-      
+      this.showToast("deleted");
     } catch (error) {
       this.showToast(error);
     }
