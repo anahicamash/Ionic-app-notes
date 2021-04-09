@@ -5,12 +5,21 @@
 </ion-header>
 
 <ion-content>
+
+  <ion-fab vertical="bottom" horizontal="end">
+    <ion-fab-button [routerLink]="['/add-post']">
+      <ion-icon name="add">
+
+      </ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
   <ion-list lines="none">
-    <ion-item-sliding>
+    <ion-item-sliding *ngFor="let post of posts">
       <ion-item class="no-padding">
         <ion-label>
-          <h2>Title</h2>
-          <p>Details</p>
+          <h2>{{ post.title }}</h2>
+          <p>{{ post.details }}</p>
         </ion-label>
       </ion-item>
 
@@ -22,7 +31,7 @@
       </ion-item-options>
 
       <ion-item-options side="end">
-        <ion-item-option color="secondary">
+        <ion-item-option color="secondary" (click)="deletePost(post)">
           <ion-icon slot="icon-only" name="trash">
           </ion-icon>
         </ion-item-option>
@@ -30,7 +39,6 @@
 
     </ion-item-sliding>
   </ion-list>
-
   <ion-button (click)="logout()">salir</ion-button>
-
+ 
 </ion-content>

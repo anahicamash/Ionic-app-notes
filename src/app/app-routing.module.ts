@@ -35,6 +35,14 @@ const routes: Routes = [
     path: 'verify-email',
     loadChildren: () => import('./pages/verify-email/verify-email.module').then( m => m.VerifyEmailPageModule)
   },
+  {
+    path: 'add-post',
+    loadChildren: () => import('./pages/add-post/add-post.module').then( m => m.AddPostPageModule)
+  },
+  {
+    path: 'edit-post',
+    loadChildren: () => import('./pages/edit-post/edit-post.module').then( m => m.EditPostPageModule)
+  },
 ];
 
 @NgModule({
