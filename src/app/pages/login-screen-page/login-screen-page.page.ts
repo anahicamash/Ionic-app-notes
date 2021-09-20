@@ -40,6 +40,7 @@ export class LoginScreenPagePage implements OnInit {
   async onLoginGoogle(email){
     try {
       const user= await this.authSvc.loginGoogle();
+      this.router.navigate(['home-page']);
       if (user){
         const isVerified = this.authSvc.isEmailVerified(user);
         console.log("verified", isVerified);
